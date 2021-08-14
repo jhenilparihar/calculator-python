@@ -240,6 +240,9 @@ class CalcGui(Calculator):
     BOX_WIDTH = 6
     OPERATOR_COLOR = "#1a1a1a"
     NUM_COLOR = "#000000"
+    BACKGROUND = "#262626"
+    FOREGROUND = "#ffffff"
+    ANSWER = "#d9d9d9"
 
     def __init__(self, main_win: object):
         self.buttons = [  # List of all button info
@@ -275,21 +278,21 @@ class CalcGui(Calculator):
         self.create_button_canvas()
 
     def create_text_canvas(self):
-        entry_canv = tk.Canvas(bg="#262626", highlightthickness=0)
-        ans_box = tk.Label(entry_canv, width=20, textvariable=self.answer, bg="#262626", fg="#d9d9d9",
+        entry_canv = tk.Canvas(bg=self.BACKGROUND, highlightthickness=0)
+        ans_box = tk.Label(entry_canv, width=20, textvariable=self.answer, bg=self.BACKGROUND, fg=self.ANSWER,
                            font=("Arial", 15, 'bold'))
         ans_box.pack(pady=(15, 5),)
-        entry1 = tk.Label(entry_canv, width=10, textvariable=self.equation, bg="#262626", fg="white",
-                          font=("Arial", 30, 'bold'))
+        entry1 = tk.Label(entry_canv, width=10, textvariable=self.equation, bg=self.BACKGROUND, fg=self.FOREGROUND,
+                          font=("Arial", 30, 'bold'), border=0)
         entry1.pack(pady=(0, 10))
         entry_canv.pack(pady=40)
 
     def create_button_canvas(self):
-        button_canv = tk.Canvas(bg="#262626", highlightthickness=0)  # Contains Input buttons
+        button_canv = tk.Canvas(bg=self.BACKGROUND, highlightthickness=0)  # Contains Input buttons
         for (character, x, y, color, command) in self.buttons:
             button = tk.Button(button_canv, text=character, bg=color,  # Unique
-                               relief=tk.RAISED, height=self.BOX_HEIGHT, width=self.BOX_WIDTH, border=0, fg="#ffffff",
-                               font=("Arial", 14, 'normal'))  # Defaults
+                               relief=tk.RAISED, height=self.BOX_HEIGHT, width=self.BOX_WIDTH, border=0,
+                               fg=self.FOREGROUND, font=("Arial", 14, 'normal'))  # Defaults
             button.grid(row=y, column=x, padx=1, pady=1)
             button.configure(command=command)
         button_canv.pack(padx=2, pady=(8, 2))
