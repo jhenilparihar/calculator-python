@@ -276,7 +276,7 @@ class CalcGui(Calculator):
 
     def create_text_canvas(self):
         entry_canv = tk.Canvas(bg="#262626", highlightthickness=0)
-        ans_box = tk.Label(entry_canv, width=10, textvariable=self.answer, bg="#262626", fg="#d9d9d9", font=("Arial", 15, 'bold'))
+        ans_box = tk.Label(entry_canv, width=20, textvariable=self.answer, bg="#262626", fg="#d9d9d9", font=("Arial", 15, 'bold'))
         ans_box.pack(pady=(15, 5),)
         entry1 = tk.Label(entry_canv, width=10, textvariable=self.equation, bg="#262626", fg="white", font=("Arial", 30, 'bold'))
         entry1.pack(pady=(0, 10))
@@ -298,7 +298,7 @@ def main():
     main_win.configure(background="#262626")
     main_win.title("Calculator")
     main_win.attributes('-alpha', 0.95)
-    main_win.resizable(False, False)  # Becomes ugly if you resize it
+    main_win.resizable(False, False)
     CalcGui(main_win)
     main_win.mainloop()
 
