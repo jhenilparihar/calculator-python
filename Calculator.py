@@ -299,14 +299,11 @@ class CalcGui(Calculator):
         button_canv.pack(padx=2, pady=(8, 2))
 
 
-def main():
-    main_win = tk.Tk()
-    main_win.configure(background="#262626")
-    main_win.title("Calculator")
-    main_win.attributes('-alpha', 0.95)
-    main_win.resizable(False, False)
-    CalcGui(main_win)
-    main_win.mainloop()
+window = tk.Tk()
+window.configure(background=BACKGROUND)
+window.title("Calculator")
+window.attributes('-alpha', 0.95)  # to add transparency effect
+window.resizable(False, False)
+CalcGui(window)
 
-
-main()
+window.mainloop()
