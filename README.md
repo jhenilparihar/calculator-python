@@ -1,2 +1,9 @@
-# calculator-python
-Calculator in Tkinter-Python with great UI and features like expression calculation, error display, undo actions, and many more.
+# Calculator With Tkinter
+Calculator in Tkinter-Python with great features like  
+- Cool Transparency Background Effect
+- Windows Calculator like Interface
+- Calculate Expressions with parenthesis input
+- Error display like Syntax Error, Imaginary Answer, etc.
+- Undo actions made by user
+- Object-Oriented Programming
+- Exceptional Handling
