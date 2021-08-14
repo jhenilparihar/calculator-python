@@ -10,5 +10,5 @@ Calculator in Tkinter-Python with great features like
 
 Feel free to download this code but don't  forget to give a star.
 
-https://user-images.githubusercontent.com/83356501/129448405-5d4e753e-1df3-4fb2-baaa-48a368b3486c.mp4
+![Calculator](https://user-images.githubusercontent.com/83356501/129448611-4a4e7dff-9985-4f00-9517-5066b1c2469b.gif)
 
