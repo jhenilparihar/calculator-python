@@ -2,6 +2,12 @@ import tkinter as tk
 import math
 import re
 
+OPERATOR_COLOR = "#1a1a1a"
+NUM_COLOR = "#000000"
+BACKGROUND = "#262626"
+FOREGROUND = "#ffffff"
+ANSWER = "#d9d9d9"
+
 
 class Calculator:
     def __init__(self):
@@ -55,7 +61,7 @@ class Calculator:
                 self.expression = " ".join(match) + " " + str(math.pow(last, 2))
                 self.evaluate(self.expression)
             except:
-                self.answer.set("Cannot Calculate Answer")
+                self.answer.set("Cannot Calculate self.answer")
 
     def press(self, num: str):
         self.set_prev_expr()
@@ -76,7 +82,7 @@ class Calculator:
             except IndexError:
                 pass
             except ValueError and TypeError:
-                self.answer.set("Imaginary Answer")
+                self.answer.set("Imaginary self.answer")
 
     def backspace(self):
         self.set_prev_expr()
@@ -216,7 +222,7 @@ class Calculator:
             if (values[-1] >= 9.9e+8) or (values[-1] <= -9.9e+8):
                 raise OverflowError
             values[-1] = round(values[-1], 10)  # rounds a decimal number to 10 digits (max on screen is 20)
-            self.expression = str(values[-1])  # If the answer starts with a dash replace with neg marker
+            self.expression = str(values[-1])  # If the self.answer starts with a dash replace with neg marker
             self.equation.set(self.expression)
             self.answer.set(self.expression)
 
@@ -238,38 +244,33 @@ class Calculator:
 class CalcGui(Calculator):
     BOX_HEIGHT = 2
     BOX_WIDTH = 6
-    OPERATOR_COLOR = "#1a1a1a"
-    NUM_COLOR = "#000000"
-    BACKGROUND = "#262626"
-    FOREGROUND = "#ffffff"
-    ANSWER = "#d9d9d9"
 
     def __init__(self, main_win: object):
         self.buttons = [  # List of all button info
             # chr.    x  y  color                command
-            ("%", 0, 0, self.OPERATOR_COLOR, self.percent),
-            ("CE", 1, 0, self.OPERATOR_COLOR, self.get_prev_expr),
-            ("C", 2, 0, self.OPERATOR_COLOR, self.clear),
-            ("⌫", 3, 0, self.OPERATOR_COLOR, self.backspace),
-            ("()", 0, 1, self.OPERATOR_COLOR, self.insert_paren),
-            ("x²", 1, 1, self.OPERATOR_COLOR, self.square),
-            ("√x", 2, 1, self.OPERATOR_COLOR, self.square_root),
-            ("÷", 3, 1, self.OPERATOR_COLOR, lambda: self.press("/")),
-            ("7", 0, 2, self.NUM_COLOR, lambda: self.press("7")),
-            ("8", 1, 2, self.NUM_COLOR, lambda: self.press("8")),
-            ("9", 2, 2, self.NUM_COLOR, lambda: self.press("9")),
-            ("x", 3, 2, self.OPERATOR_COLOR, lambda: self.press("*")),
-            ("4", 0, 3, self.NUM_COLOR, lambda: self.press("4")),
-            ("5", 1, 3, self.NUM_COLOR, lambda: self.press("5")),
-            ("6", 2, 3, self.NUM_COLOR, lambda: self.press("6")),
-            ("-", 3, 3, self.OPERATOR_COLOR, lambda: self.press("-")),
-            ("1", 0, 4, self.NUM_COLOR, lambda: self.press("1")),
-            ("2", 1, 4, self.NUM_COLOR, lambda: self.press("2")),
-            ("3", 2, 4, self.NUM_COLOR, lambda: self.press("3")),
-            ("+", 3, 4, self.OPERATOR_COLOR, lambda: self.press("+")),
-            ("+/-", 0, 5, self.NUM_COLOR, lambda: self.press("-")),
-            ("0", 1, 5, self.NUM_COLOR, lambda: self.press("0")),
-            (".", 2, 5, self.NUM_COLOR, lambda: self.press(".")),
+            ("%", 0, 0, OPERATOR_COLOR, self.percent),
+            ("CE", 1, 0, OPERATOR_COLOR, self.get_prev_expr),
+            ("C", 2, 0, OPERATOR_COLOR, self.clear),
+            ("⌫", 3, 0, OPERATOR_COLOR, self.backspace),
+            ("()", 0, 1, OPERATOR_COLOR, self.insert_paren),
+            ("x²", 1, 1, OPERATOR_COLOR, self.square),
+            ("√x", 2, 1, OPERATOR_COLOR, self.square_root),
+            ("÷", 3, 1, OPERATOR_COLOR, lambda: self.press("/")),
+            ("7", 0, 2, NUM_COLOR, lambda: self.press("7")),
+            ("8", 1, 2, NUM_COLOR, lambda: self.press("8")),
+            ("9", 2, 2, NUM_COLOR, lambda: self.press("9")),
+            ("x", 3, 2, OPERATOR_COLOR, lambda: self.press("*")),
+            ("4", 0, 3, NUM_COLOR, lambda: self.press("4")),
+            ("5", 1, 3, NUM_COLOR, lambda: self.press("5")),
+            ("6", 2, 3, NUM_COLOR, lambda: self.press("6")),
+            ("-", 3, 3, OPERATOR_COLOR, lambda: self.press("-")),
+            ("1", 0, 4, NUM_COLOR, lambda: self.press("1")),
+            ("2", 1, 4, NUM_COLOR, lambda: self.press("2")),
+            ("3", 2, 4, NUM_COLOR, lambda: self.press("3")),
+            ("+", 3, 4, OPERATOR_COLOR, lambda: self.press("+")),
+            ("+/-", 0, 5, NUM_COLOR, lambda: self.press("-")),
+            ("0", 1, 5, NUM_COLOR, lambda: self.press("0")),
+            (".", 2, 5, NUM_COLOR, lambda: self.press(".")),
             ("=", 3, 5, "#264d73", lambda: self.evaluate(self.expression)),
         ]
         self.main_win = main_win
@@ -278,21 +279,21 @@ class CalcGui(Calculator):
         self.create_button_canvas()
 
     def create_text_canvas(self):
-        entry_canv = tk.Canvas(bg=self.BACKGROUND, highlightthickness=0)
-        ans_box = tk.Label(entry_canv, width=20, textvariable=self.answer, bg=self.BACKGROUND, fg=self.ANSWER,
+        entry_canv = tk.Canvas(bg=BACKGROUND, highlightthickness=0)
+        ans_box = tk.Label(entry_canv, width=20, textvariable=self.answer, bg=BACKGROUND, fg=ANSWER,
                            font=("Arial", 15, 'bold'))
         ans_box.pack(pady=(15, 5),)
-        entry1 = tk.Label(entry_canv, width=10, textvariable=self.equation, bg=self.BACKGROUND, fg=self.FOREGROUND,
+        entry1 = tk.Label(entry_canv, width=10, textvariable=self.equation, bg=BACKGROUND, fg=FOREGROUND,
                           font=("Arial", 30, 'bold'), border=0)
         entry1.pack(pady=(0, 10))
         entry_canv.pack(pady=40)
 
     def create_button_canvas(self):
-        button_canv = tk.Canvas(bg=self.BACKGROUND, highlightthickness=0)  # Contains Input buttons
+        button_canv = tk.Canvas(bg=BACKGROUND, highlightthickness=0)  # Contains Input buttons
         for (character, x, y, color, command) in self.buttons:
             button = tk.Button(button_canv, text=character, bg=color,  # Unique
                                relief=tk.RAISED, height=self.BOX_HEIGHT, width=self.BOX_WIDTH, border=0,
-                               fg=self.FOREGROUND, font=("Arial", 14, 'normal'))  # Defaults
+                               fg=FOREGROUND, font=("Arial", 14, 'normal'))  # Defaults
             button.grid(row=y, column=x, padx=1, pady=1)
             button.configure(command=command)
         button_canv.pack(padx=2, pady=(8, 2))
