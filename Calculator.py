@@ -9,7 +9,6 @@ FOREGROUND = "#ffffff"
 ANSWER = "#d9d9d9"
 
 
-
 class Calculator:
     def __init__(self):
         self.answer = tk.StringVar()
