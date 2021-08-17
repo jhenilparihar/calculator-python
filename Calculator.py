@@ -302,7 +302,7 @@ class CalcGui(Calculator):
 window = tk.Tk()
 window.configure(background=BACKGROUND)
 window.title("Calculator")
-window.attributes('-alpha', 0.95)  # to add transparency effect
+window.attributes('-alpha', 0.94)  # to add transparency effect
 window.resizable(False, False)
 CalcGui(window)
 
