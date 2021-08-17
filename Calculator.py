@@ -1,5 +1,5 @@
 import tkinter as tk
-import mah
+import math
 import re
 
 OPERATOR_COLOR = "#1a1a1a"
