@@ -61,7 +61,7 @@ class Calculator:
                 self.expression = " ".join(match) + " " + str(math.pow(last, 2))
                 self.evaluate(self.expression)
             except:
-                self.answer.set("Cannot Calculate self.answer")
+                self.answer.set(f"Cannot Calculate {self.answer}")
 
     def press(self, num: str):
         self.set_prev_expr()
@@ -82,7 +82,7 @@ class Calculator:
             except IndexError:
                 pass
             except ValueError and TypeError:
-                self.answer.set("Imaginary self.answer")
+                self.answer.set(f"Imaginary {self.answer}")
 
     def backspace(self):
         self.set_prev_expr()
