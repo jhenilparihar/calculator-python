@@ -2,7 +2,6 @@ import tkinter as tk
 import math
 import re
 
-
 OPERATOR_COLOR = "#1a1a1a"
 NUM_COLOR = "#000000"
 BACKGROUND = "#262626"
