@@ -3,6 +3,7 @@
 </div>
 
 <p align='right'>
+  <img src="https://user-images.githubusercontent.com/83356501/129448611-4a4e7dff-9985-4f00-9517-5066b1c2469b.gif" />
 </p>
 
 ### Calculator in Tkinter-Python with great features like  
