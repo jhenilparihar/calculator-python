@@ -303,7 +303,9 @@ window = tk.Tk()
 window.configure(background=BACKGROUND)
 window.title("Calculator")
 window.attributes('-alpha', 0.94)  # to add transparency effect
-window.resizable(False, False) # To disable resizing 
+window.resizable(False, False) # To disable resizing
+main_win.iconbitmap("calculator.ico")
+
 CalcGui(window)
 
 window.mainloop()
